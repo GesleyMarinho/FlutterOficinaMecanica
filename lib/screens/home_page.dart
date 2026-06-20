@@ -15,6 +15,7 @@ class TelaHome extends StatelessWidget {
             const Text(
               'Seja bem vindo a Oficina Mecânica',
               style: TextStyle(
+                
                 fontSize: 28.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,

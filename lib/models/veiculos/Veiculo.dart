@@ -4,7 +4,7 @@ class Veiculos {
   final String placa;
   final String cor;
   final String modelo;
-  final DateTime ano;
+  final int ano;
 
   Veiculos({
     required this.id,
