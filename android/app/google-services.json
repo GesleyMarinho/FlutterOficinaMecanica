@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "443101282126",
+    "firebase_url": "https://oficinamecanica-8e118-default-rtdb.firebaseio.com",
+    "project_id": "oficinamecanica-8e118",
+    "storage_bucket": "oficinamecanica-8e118.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:443101282126:android:d571d863f3065ae4de281f",
+        "android_client_info": {
+          "package_name": "com.example.flutter_oficina"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_FKVxo9ge4P6IM9-W8H0QR7gVNfQJ6m8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
