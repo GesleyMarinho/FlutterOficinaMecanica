@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_oficina/screens/login_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'features/clientes/presentation/screens/form_cliente_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: Telalogin());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: FormClienteScreen(),
+    );
   }
 }
