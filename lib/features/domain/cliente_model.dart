@@ -37,9 +37,6 @@ class ClienteModel {
       'telefone': telefone,
       'email': email,
       'dataCadastro': dataCadastro.millisecondsSinceEpoch,
-      // POR QUÊ millisecondsSinceEpoch?
-      // Timestamp do Firestore pode causar problemas de fuso horário.
-      // int é universal e fácil de debugar.
     };
   }
 

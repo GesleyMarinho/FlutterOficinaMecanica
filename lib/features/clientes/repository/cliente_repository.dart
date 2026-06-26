@@ -39,7 +39,7 @@ class ClienteRepository {
     }
   }
 
-  Stream<List<ClienteModel>> listarClientes() {
+  Future<List<ClienteModel>> listarClientes() {
     return _service.listarTodos();
   }
 }

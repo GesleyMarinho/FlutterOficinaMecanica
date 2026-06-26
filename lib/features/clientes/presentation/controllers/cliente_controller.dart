@@ -13,7 +13,7 @@ class ClienteController extends ChangeNotifier {
   ClienteController({ClienteRepository? repository})
     : _repository = repository ?? ClienteRepository();
 
-  Stream<List<ClienteModel>> get clientes => _repository.listarClientes();
+  Future<List<ClienteModel>> get clientes => _repository.listarClientes();
 
   Future<bool> salvarCliente(ClienteModel cliente) async {
     isLoading = true;
