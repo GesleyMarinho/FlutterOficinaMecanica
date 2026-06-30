@@ -1,56 +1,39 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_oficina/core/constants/firebase_collections.dart';
-import 'package:flutter_oficina/core/utils/logger.dart';
+
 import 'package:flutter_oficina/features/domain/cliente_model.dart';
 
 class ClienteService {
-  final FirebaseFirestore _db;
+  final FirebaseFirestore _firebase = FirebaseFirestore.instance;
 
-  ClienteService({FirebaseFirestore? db})
-    : _db = db ?? _buildDb();
-
-  static FirebaseFirestore _buildDb() {
-    final db = FirebaseFirestore.instance;
-    db.settings = const Settings(persistenceEnabled: true);
-    return db;
-  }
-
-  CollectionReference get _colecao =>
-      _db.collection(FirebaseCollections.clientes);
-
-  Future<String> criar(ClienteModel cliente) async {
-    AppLogger.info('Criando cliente: ${cliente.nome}', tag: 'ClienteService');
-
-    // Com persistência offline, o add() grava no cache local e retorna imediatamente.
-    // A sincronização com o servidor ocorre em segundo plano quando houver conexão.
-    final docRef = await _colecao.add(cliente.toMap());
-
-    AppLogger.info(
-      'Cliente criado com ID: ${docRef.id}',
-      tag: 'ClienteService',
-    );
-    return docRef.id;
+  Future<String> salvarCliente(ClienteModel cliente) async {
+    try {
+      DocumentReference doc = await _firebase
+          .collection("clientes")
+          .add(cliente.toMap());
+      print("log de erro ao cadastrar " + doc.id);
+      return doc.id;
+    } catch (e) {
+      print("log de erro ao cadastrar " + e.toString());
+      rethrow;
+    }
   }
 
   Future<void> atualizar(ClienteModel cliente) async {
     if (cliente.id == null) throw Exception('Tentou atualizar cliente sem ID');
-    await _colecao.doc(cliente.id).update(cliente.toMap());
+    await _firebase
+        .collection("clientes")
+        .doc(cliente.id)
+        .update(cliente.toMap());
   }
 
-  Future<void> deletar(String id) async {
-    await _colecao.doc(id).delete();
+  Future<void> deletarCliente(String id) async {
+    await _firebase.collection("clientes").doc(id).delete();
   }
 
-  Stream<List<ClienteModel>> listarTodos() {
-    return _colecao.orderBy('nome').snapshots().map((snapshot) {
-      return snapshot.docs
-          .map(
-            (doc) => ClienteModel.fromMap(
-              doc.id,
-              doc.data() as Map<String, dynamic>,
-            ),
-          )
-          .toList();
-    });
+  Future<List<ClienteModel>> listarClientes() async {
+    final snapshot = await _firebase.collection("clientes").get();
+    return snapshot.docs
+        .map((doc) => ClienteModel.fromMap(doc.id, doc.data()))
+        .toList();
   }
 }

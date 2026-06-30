@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'features/clientes/screens/navigations_screen.dart';
 import 'firebase_options.dart';
-import 'features/clientes/presentation/screens/form_cliente_screen.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: FormClienteScreen(),
+      home: NavigationsScreen(),
     );
   }
 }
