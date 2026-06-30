@@ -23,9 +23,7 @@ class ClienteModel {
       nome: map['nome'] ?? '',
       telefone: map['telefone'] ?? '',
       email: map['email'],
-      dataCadastro: DateTime.fromMillisecondsSinceEpoch(
-        map['dataCadastro'] ?? 0,
-      ),
+      dataCadastro: DateTime.fromMillisecondsSinceEpoch(  map['dataCadastro'] ?? 0,  ),
     );
   }
 
