@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import 'package:flutter_oficina/features/domain/cliente_model.dart';
+import '../../models/domain/cliente_model.dart';
 
 class ClienteService {
   final FirebaseFirestore _firebase = FirebaseFirestore.instance;
@@ -10,21 +9,22 @@ class ClienteService {
       DocumentReference doc = await _firebase
           .collection("clientes")
           .add(cliente.toMap());
-      print("log de erro ao cadastrar " + doc.id);
+      print("Cliente cadastrado com sucesso. ID: ${doc.id}");
       return doc.id;
     } catch (e) {
-      print("log de erro ao cadastrar " + e.toString());
+      print("log de erro ao cadastrar $e");
       rethrow;
     }
   }
 
   Future<void> atualizar(ClienteModel cliente) async {
-    if (cliente.id == null) throw Exception('Tentou atualizar cliente sem ID');
+    if (cliente.id != null){
     await _firebase
         .collection("clientes")
         .doc(cliente.id)
         .update(cliente.toMap());
   }
+    }
 
   Future<void> deletarCliente(String id) async {
     await _firebase.collection("clientes").doc(id).delete();
@@ -36,4 +36,5 @@ class ClienteService {
         .map((doc) => ClienteModel.fromMap(doc.id, doc.data()))
         .toList();
   }
+
 }

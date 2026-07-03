@@ -1,6 +1,7 @@
-import 'package:flutter_oficina/features/clientes/repository/cliente_repository.dart';
+import 'package:flutter_oficina/features/clientes/repository/cliente_repository/cliente_repository.dart';
 import 'package:flutter/material.dart';
-import '../../domain/cliente_model.dart';
+
+import '../../../models/domain/cliente_model.dart';
 
 class CadastroClienteScreen extends StatefulWidget {
   final ClienteModel? cliente;
@@ -28,7 +29,7 @@ class _CadastroClienteScreenState extends State<CadastroClienteScreen> {
   Future<void> salvarCliente() async {
     try {
       ClienteModel clienteModel = ClienteModel(
-        id: '',
+        id: widget.cliente?.id,
         nome: nomeController.text,
         email: emailController.text,
         telefone: telefoneController.text,
@@ -45,11 +46,15 @@ class _CadastroClienteScreenState extends State<CadastroClienteScreen> {
       emailController.clear();
       nomeController.clear();
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(e.toString().replaceFirst('Exception: ', '.'))),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(e.toString().replaceFirst('Exception: ', '.')),
+          ),
+        );
+      }
     }
-    Navigator.pop(context);
+    if (mounted) Navigator.pop(context);
   }
 
   @override

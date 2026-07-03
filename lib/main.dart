@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'features/clientes/screens/navigations_screen.dart';
+import 'features/clientes/screens/cliente_screen/navigations_screen.dart';
 import 'firebase_options.dart';
 
 

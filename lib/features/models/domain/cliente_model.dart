@@ -2,7 +2,7 @@
 // Nenhuma outra parte do código define essa estrutura.
 
 class ClienteModel {
-  final String id;
+  final String? id;
   final String nome;
   final String telefone;
   final String? email;

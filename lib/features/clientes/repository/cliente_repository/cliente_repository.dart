@@ -1,10 +1,7 @@
-// RESPONSABILIDADE: validar, orquestrar, decidir.
-// A Service executa. O Repository pensa.
-
 import 'package:flutter_oficina/core/errors/InvalidEmailException.dart';
 import 'package:flutter_oficina/core/utils/logger.dart';
 import 'package:flutter_oficina/features/clientes/data/cliente_service.dart';
-import 'package:flutter_oficina/features/domain/cliente_model.dart';
+import '../../../models/domain/cliente_model.dart';
 
 class ClienteRepository {
   final ClienteService _service;
@@ -50,4 +47,5 @@ class ClienteRepository {
       throw Invalidemailexception();
     }
   }
+
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_oficina/features/clientes/repository/cliente_repository.dart';
-import 'package:flutter_oficina/features/domain/cliente_model.dart';
-
+import 'package:flutter_oficina/features/clientes/repository/cliente_repository/cliente_repository.dart';
+import '../../../models/domain/cliente_model.dart';
+import '../../../veiculos/screens/form_veiculo_screen.dart';
+import 'detalhes_cliente_screen.dart';
 import 'form_cliente_screen.dart';
 
 class ListClientesScreen extends StatefulWidget {
@@ -56,6 +57,15 @@ class _ListClintesScreenPage extends State<ListClientesScreen> {
     await _carregarClientes();
   }
 
+  Future<void> _detalhesCliente(ClienteModel cliente) async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (contex) => DetalhesClienteScreen(cliente: cliente),
+      ),
+    ).then((_) => _carregarClientes());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,16 +79,29 @@ class _ListClintesScreenPage extends State<ListClientesScreen> {
                 return ListTile(
                   title: Text(cliente.nome),
                   subtitle: Text(cliente.telefone),
+                  onTap: () => _detalhesCliente(cliente),
                   onLongPress: () => _confirmarDelete(context, cliente),
-                  onTap: () {
-                    /*Navigator.push(
+                  trailing: IconButton(
+                    icon: const Icon(Icons.edit),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              CadastroClienteScreen(cliente: cliente),
+                        ),
+                      ).then((_) => _carregarClientes());
+                    },
+                  ),
+                  /*onPressed: () {
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
                             CadastroClienteScreen(cliente: cliente),
                       ),
-                    ).then((_) => _carregarClientes());*/
-                  },
+                    ).then((_) => _carregarClientes());
+                  },*/
                 );
               },
             ),
