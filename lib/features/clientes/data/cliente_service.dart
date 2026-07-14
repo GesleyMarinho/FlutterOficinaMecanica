@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../models/domain/cliente_model.dart';
 
 class ClienteService {
@@ -9,10 +10,8 @@ class ClienteService {
       DocumentReference doc = await _firebase
           .collection("clientes")
           .add(cliente.toMap());
-      print("Cliente cadastrado com sucesso. ID: ${doc.id}");
       return doc.id;
     } catch (e) {
-      print("log de erro ao cadastrar $e");
       rethrow;
     }
   }
@@ -27,6 +26,7 @@ class ClienteService {
     }
 
   Future<void> deletarCliente(String id) async {
+
     await _firebase.collection("clientes").doc(id).delete();
   }
 

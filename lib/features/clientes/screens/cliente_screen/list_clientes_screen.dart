@@ -43,7 +43,8 @@ class _ListClintesScreenPage extends State<ListClientesScreen> {
           TextButton(
             onPressed: () async {
               Navigator.pop(context);
-              await _deletarCliente(cliente.id!);
+
+              await _deletarCliente(cliente);
             },
             child: const Text('Deletar'),
           ),
@@ -52,8 +53,8 @@ class _ListClintesScreenPage extends State<ListClientesScreen> {
     );
   }
 
-  Future<void> _deletarCliente(String id) async {
-    await _repository.deletarClientes(id);
+  Future<void> _deletarCliente(ClienteModel cliente) async {
+    await _repository.deletarClientes(cliente);
     await _carregarClientes();
   }
 
@@ -93,15 +94,6 @@ class _ListClintesScreenPage extends State<ListClientesScreen> {
                       ).then((_) => _carregarClientes());
                     },
                   ),
-                  /*onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            CadastroClienteScreen(cliente: cliente),
-                      ),
-                    ).then((_) => _carregarClientes());
-                  },*/
                 );
               },
             ),

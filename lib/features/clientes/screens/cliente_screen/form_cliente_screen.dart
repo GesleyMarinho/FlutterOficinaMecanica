@@ -33,7 +33,7 @@ class _CadastroClienteScreenState extends State<CadastroClienteScreen> {
         nome: nomeController.text,
         email: emailController.text,
         telefone: telefoneController.text,
-        dataCadastro: DateTime.now(),
+        dataCadastro: widget.cliente?.dataCadastro ?? DateTime.now(),
       );
 
       if (widget.cliente == null) {
