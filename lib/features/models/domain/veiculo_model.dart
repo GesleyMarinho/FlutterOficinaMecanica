@@ -1,5 +1,5 @@
 class VeiculosModel {
-  final String? id;
+  final String? veiculoId;
   final String clienteId;
   final String placa;
   final String? cor;
@@ -8,7 +8,7 @@ class VeiculosModel {
   final double quilomentragem;
 
   VeiculosModel({
-    this.id,
+    this.veiculoId,
     required this.clienteId,
     required this.placa,
     required this.cor,
@@ -19,7 +19,7 @@ class VeiculosModel {
 
   factory VeiculosModel.fromMap(String id, Map<String, dynamic> map) {
     return VeiculosModel(
-      id: id,
+      veiculoId: id,
       clienteId: map['clienteId'] ?? '',
       placa: map['placa'] ?? '',
       cor: map['cor'] ?? '',
@@ -42,5 +42,5 @@ class VeiculosModel {
 
   @override
   String toString() =>
-      'VeiculoModel(clienteId: $id, placa: $placa, cor: $cor, modelo: $modelo, ano: $ano, quilomentragem: $quilomentragem)';
+      'VeiculoModel(clienteId: $veiculoId, placa: $placa, cor: $cor, modelo: $modelo, ano: $ano, quilomentragem: $quilomentragem)';
 }

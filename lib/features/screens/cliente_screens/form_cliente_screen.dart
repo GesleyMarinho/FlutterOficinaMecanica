@@ -1,7 +1,7 @@
 import 'package:flutter_oficina/features/clientes/repository/cliente_repository/cliente_repository.dart';
 import 'package:flutter/material.dart';
 
-import '../../../models/domain/cliente_model.dart';
+import '../../models/domain/cliente_model.dart';
 
 class CadastroClienteScreen extends StatefulWidget {
   final ClienteModel? cliente;

@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'features/clientes/screens/cliente_screen/navigations_screen.dart';
+import 'package:flutter/material.dart';
+import 'features/screens/cliente_screens/navigations_screen.dart';
 import 'firebase_options.dart';
-
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

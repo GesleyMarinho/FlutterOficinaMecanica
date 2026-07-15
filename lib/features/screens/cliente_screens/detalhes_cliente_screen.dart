@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_oficina/features/clientes/screens/veiculos_screen/detalhes_veiculo_screen.dart';
 import 'package:flutter_oficina/features/models/domain/cliente_model.dart';
-import 'package:flutter_oficina/features/veiculos/screens/form_veiculo_screen.dart';
-
-import '../../../models/domain/veiculo_model.dart';
-import '../../../veiculos/repository/veiculo_repository.dart';
+import '../../models/domain/veiculo_model.dart';
+import '../veiculo_screen/form_ordem_servico_screen.dart';
+import '../veiculo_screen/form_veiculo_screen.dart';
+import '../../veiculos/repository/veiculo_repository.dart';
+import '../veiculo_screen/detalhes_veiculo_screen.dart';
 
 class DetalhesClienteScreen extends StatefulWidget {
   final ClienteModel cliente;
@@ -132,7 +132,28 @@ class _DetalhesClienteScreenState extends State<DetalhesClienteScreen> {
                                 Text('KM: ${veiculo.quilomentragem}'),
                               ],
                             ),
-                            trailing: const Icon(Icons.chevron_right),
+                            trailing: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                IconButton(
+                                  icon: const Icon(Icons.add_circle_outline),
+                                  tooltip: 'Nova Ordem de serviço',
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            FormOrdemServicoScreen(
+                                              veiculo: veiculo,
+                                              cliente: widget.cliente,
+                                            ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                                const Icon(Icons.chevron_right),
+                              ],
+                            ),
                             onTap: () {
                               Navigator.push(
                                 context,
@@ -141,7 +162,6 @@ class _DetalhesClienteScreenState extends State<DetalhesClienteScreen> {
                                       (DetalhesVeiculoScreen(veiculo: veiculo)),
                                 ),
                               );
-                              // Futuro: abrir detalhes do veiculo / ordens de servico
                             },
                           ),
                         );

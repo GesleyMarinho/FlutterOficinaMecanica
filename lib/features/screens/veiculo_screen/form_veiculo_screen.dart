@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_oficina/features/veiculos/repository/veiculo_repository.dart';
 import 'package:flutter_oficina/features/models/domain/veiculo_model.dart';
 
-import '../../../core/errors/veiculo_validation_exception.dart';
+import '../../../../core/errors/veiculo_validation_exception.dart';
 
 class FormVeiculoScreen extends StatefulWidget {
   final String clienteId;
