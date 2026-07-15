@@ -2,7 +2,7 @@ class VeiculosModel {
   final String? id;
   final String clienteId;
   final String placa;
-  final String cor;
+  final String? cor;
   final String? modelo;
   final int ano;
   final double quilomentragem;

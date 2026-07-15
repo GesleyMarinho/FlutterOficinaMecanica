@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_oficina/features/veiculos/repository/veiculo_repository.dart';
 import 'package:flutter_oficina/features/models/domain/veiculo_model.dart';
 
+import '../../../core/errors/veiculo_validation_exception.dart';
+
 class FormVeiculoScreen extends StatefulWidget {
   final String clienteId;
 
@@ -32,13 +34,22 @@ class _FormVeiculosScreen extends State<FormVeiculoScreen> {
 
   Future<void> _salvarDadosVeiculo() async {
     try {
+      final ano = int.tryParse(_anoCtrl.text);
+      if (ano == null) {
+        throw VeiculoValidationException('Ano deve ser um numero');
+      }
+      final km = double.tryParse(_kmCtrl.text);
+      if (km == null) {
+        throw VeiculoValidationException('Quilometragem deve ser um numero');
+      }
+
       final veiculo = VeiculosModel(
         clienteId: widget.clienteId,
         placa: _placaCtrl.text,
         cor: _corCtrl.text,
         modelo: _modeloCtrl.text,
-        ano: int.parse(_anoCtrl.text),
-        quilomentragem: double.parse(_kmCtrl.text),
+        ano: ano,
+        quilomentragem: km,
       );
       await veiculoRepository.salvarVeiculos(veiculo);
       if (mounted) Navigator.pop(context);
@@ -50,16 +61,11 @@ class _FormVeiculosScreen extends State<FormVeiculoScreen> {
       }
     }
   }
+
   @override
   void initState() {
     super.initState();
-    _placaCtrl.text = 'abcd1234';
-    _corCtrl.text = 'Vermelho';
-    _modeloCtrl.text = 'Fan 160';
-    _anoCtrl.text = '2016';
-    _kmCtrl.text = '99.999';
   }
-
 
   @override
   Widget build(BuildContext context) {

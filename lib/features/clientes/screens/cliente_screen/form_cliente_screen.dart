@@ -112,7 +112,6 @@ class _CadastroClienteScreenState extends State<CadastroClienteScreen> {
               child: ElevatedButton(
                 onPressed: () async {
                   await salvarCliente();
-                  print('Foi clicado no Salvar');
                 },
                 child: const Text("Salvar"),
               ),
