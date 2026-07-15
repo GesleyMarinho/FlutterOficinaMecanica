@@ -63,11 +63,6 @@ class _FormVeiculosScreen extends State<FormVeiculoScreen> {
   }
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Cadastro Veiculo'), centerTitle: true),
@@ -77,7 +72,7 @@ class _FormVeiculosScreen extends State<FormVeiculoScreen> {
           children: [
             TextField(
               controller: _placaCtrl,
-
+              keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Placa',
@@ -86,6 +81,7 @@ class _FormVeiculosScreen extends State<FormVeiculoScreen> {
             const SizedBox(height: 16.0),
             TextField(
               controller: _corCtrl,
+              keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'cor',
@@ -94,6 +90,7 @@ class _FormVeiculosScreen extends State<FormVeiculoScreen> {
             const SizedBox(height: 16.0),
             TextField(
               controller: _modeloCtrl,
+              keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Modelo',
@@ -102,6 +99,7 @@ class _FormVeiculosScreen extends State<FormVeiculoScreen> {
             const SizedBox(height: 16.0),
             TextField(
               controller: _anoCtrl,
+              keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'ano',
@@ -110,6 +108,7 @@ class _FormVeiculosScreen extends State<FormVeiculoScreen> {
             const SizedBox(height: 16.0),
             TextField(
               controller: _kmCtrl,
+              keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'KM',
