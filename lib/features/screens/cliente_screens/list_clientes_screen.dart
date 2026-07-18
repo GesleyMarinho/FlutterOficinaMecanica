@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_oficina/features/clientes/repository/cliente_repository/cliente_repository.dart';
 import '../../models/domain/cliente_model.dart';
-import 'detalhes_cliente_screen.dart';
+import 'list_order_servico_screen.dart';
 import 'form_cliente_screen.dart';
 
 class ListClientesScreen extends StatefulWidget {

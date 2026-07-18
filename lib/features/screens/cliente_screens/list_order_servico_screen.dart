@@ -158,8 +158,9 @@ class _DetalhesClienteScreenState extends State<DetalhesClienteScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      (DetalhesVeiculoScreen(veiculo: veiculo)),
+                                  builder: (context) => (ListOrdemServicoScreen(
+                                    veiculosModel: veiculo,
+                                  )),
                                 ),
                               );
                             },
